@@ -1,0 +1,23 @@
+{
+    "name": "vertera-dev/translation-loader-code",
+    "description": "Core of translation loader",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmytro Dmytruk",
+            "email": "d.dmytruk@icloud.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~7.2",
+        "phpoffice/phpspreadsheet": "~1.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "TranslationLoader\\": "src/"
+        }
+    }
+}
