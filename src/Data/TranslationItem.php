@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Data;
+namespace VerteraDev\TranslationLoader\Data;
 
 class TranslationItem
 {

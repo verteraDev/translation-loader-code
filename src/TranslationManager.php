@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader;
+namespace VerteraDev\TranslationLoader;
 
-use TranslationLoader\Data\TranslationGroup;
-use TranslationLoader\Reader\TranslationReaderAbstract;
-use TranslationLoader\Writer\TranslationWriterAbstract;
-use TranslationLoader\Exception\TranslationLoaderException;
+use VerteraDev\TranslationLoader\Data\TranslationGroup;
+use VerteraDev\TranslationLoader\Reader\TranslationReaderAbstract;
+use VerteraDev\TranslationLoader\Writer\TranslationWriterAbstract;
+use VerteraDev\TranslationLoader\Exception\TranslationLoaderException;
 
 class TranslationManager
 {

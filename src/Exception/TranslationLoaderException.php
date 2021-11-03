@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Exception;
+namespace VerteraDev\TranslationLoader\Exception;
 
 use Exception;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Writer;
+namespace VerteraDev\TranslationLoader\Writer;
 
-use TranslationLoader\TranslationManager;
-use TranslationLoader\Data\TranslationGroup;
+use VerteraDev\TranslationLoader\TranslationManager;
+use VerteraDev\TranslationLoader\Data\TranslationGroup;
 
 abstract class TranslationWriterAbstract
 {

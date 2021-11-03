@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Reader;
+namespace VerteraDev\TranslationLoader\Reader;
 
 use Generator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use TranslationLoader\Data\TranslationGroup;
-use TranslationLoader\Data\TranslationItem;
-use TranslationLoader\TranslationManager;
-use TranslationLoader\Exception\TranslationLoaderException;
+use VerteraDev\TranslationLoader\Data\TranslationGroup;
+use VerteraDev\TranslationLoader\Data\TranslationItem;
+use VerteraDev\TranslationLoader\TranslationManager;
+use VerteraDev\TranslationLoader\Exception\TranslationLoaderException;
 
 class XlsxReader extends TranslationReaderAbstract
 {

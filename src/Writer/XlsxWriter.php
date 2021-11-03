@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Writer;
+namespace VerteraDev\TranslationLoader\Writer;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\IWriter;
-use TranslationLoader\TranslationManager;
-use TranslationLoader\Data\TranslationGroup;
+use VerteraDev\TranslationLoader\TranslationManager;
+use VerteraDev\TranslationLoader\Data\TranslationGroup;
 
 class XlsxWriter extends TranslationWriterAbstract
 {

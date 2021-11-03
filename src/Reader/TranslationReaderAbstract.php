@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TranslationLoader\Reader;
+namespace VerteraDev\TranslationLoader\Reader;
 
 use Generator;
-use TranslationLoader\TranslationManager;
+use VerteraDev\TranslationLoader\TranslationManager;
 
 abstract class TranslationReaderAbstract
 {
