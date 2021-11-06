@@ -91,7 +91,7 @@ class XlsxReader extends TranslationReaderAbstract
     protected function getSpreadsheet()
     {
         if (!is_file($this->filePath)) {
-            throw new TranslationLoaderException("File not found: {$this->filePath}!");
+            throw new TranslationLoaderException('File not found!', ['filePath' => $this->filePath]);
         }
 
         if ($this->spreadsheet === null) {
