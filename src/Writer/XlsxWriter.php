@@ -56,7 +56,7 @@ class XlsxWriter extends TranslationWriterAbstract
 
         foreach ($translationGroup->items as $translationItem) {
             $cellID = $this->languageMap[$translationItem->language];
-            $content = trim($translationItem->content);
+            $content = $translationItem->content ? trim($translationItem->content) : null;
             $this->spreadsheet->getActiveSheet()->setCellValueByColumnAndRow($cellID, $this->rowIndex, $content);
         }
 
