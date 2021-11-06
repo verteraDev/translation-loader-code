@@ -7,6 +7,7 @@ namespace VerteraDev\TranslationLoader\Reader;
 use Generator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Exception;
 use VerteraDev\TranslationLoader\Data\TranslationGroup;
 use VerteraDev\TranslationLoader\Data\TranslationItem;
 use VerteraDev\TranslationLoader\TranslationManager;
@@ -14,8 +15,10 @@ use VerteraDev\TranslationLoader\Exception\TranslationLoaderException;
 
 class XlsxReader extends TranslationReaderAbstract
 {
-    /** @var Spreadsheet */
-    protected $spreadsheet;
+    /** @var string */
+    protected $filePath;
+    /** @var Spreadsheet|null */
+    protected $spreadsheet = null;
 
     /**
      * @param TranslationManager $manager
@@ -26,13 +29,7 @@ class XlsxReader extends TranslationReaderAbstract
     {
         parent::__construct($manager);
 
-        if (!is_file($filePath)) {
-            throw new TranslationLoaderException("File not found: {$filePath}!");
-        }
-
-        $reader = IOFactory::createReaderForFile($filePath);
-        $reader->setReadDataOnly(true);
-        $this->spreadsheet = $reader->load($filePath);
+        $this->filePath = $filePath;
     }
 
     /**
@@ -41,7 +38,7 @@ class XlsxReader extends TranslationReaderAbstract
     public function read(): Generator
     {
         $availableCellIDs = ['A' => 'category', 'B' => 'code'];
-        foreach ($this->spreadsheet->getActiveSheet()->getRowIterator() as $rowID => $row) {
+        foreach ($this->getSpreadsheet()->getActiveSheet()->getRowIterator() as $rowID => $row) {
             if ($rowID == 1) {
                 foreach ($row->getCellIterator() as $cellID => $cell) {
                     $cellValue = mb_strtolower(trim($cell->getValue() ?: ''));
@@ -84,5 +81,24 @@ class XlsxReader extends TranslationReaderAbstract
 
             yield $data;
         }
+    }
+
+    /**
+     * @return Spreadsheet|null
+     * @throws TranslationLoaderException
+     * @throws Exception
+     */
+    protected function getSpreadsheet()
+    {
+        if (!is_file($this->filePath)) {
+            throw new TranslationLoaderException("File not found: {$this->filePath}!");
+        }
+
+        if ($this->spreadsheet === null) {
+            $reader = IOFactory::createReaderForFile($this->filePath);
+            $reader->setReadDataOnly(true);
+            $this->spreadsheet = $reader->load($this->filePath);
+        }
+        return $this->spreadsheet;
     }
 }
