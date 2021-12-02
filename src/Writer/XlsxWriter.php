@@ -7,6 +7,7 @@ namespace VerteraDev\TranslationLoader\Writer;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\IWriter;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use VerteraDev\TranslationLoader\TranslationManager;
 use VerteraDev\TranslationLoader\Data\TranslationGroup;
 
@@ -51,13 +52,13 @@ class XlsxWriter extends TranslationWriterAbstract
             $this->rowIndex++;
         }
 
-        $this->spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(1, $this->rowIndex, trim($translationGroup->category));
-        $this->spreadsheet->getActiveSheet()->setCellValueByColumnAndRow(2, $this->rowIndex, trim($translationGroup->code));
+        $this->spreadsheet->getActiveSheet()->setCellValueExplicitByColumnAndRow(1, $this->rowIndex, trim($translationGroup->category), DataType::TYPE_STRING);
+        $this->spreadsheet->getActiveSheet()->setCellValueExplicitByColumnAndRow(2, $this->rowIndex, trim($translationGroup->code), DataType::TYPE_STRING);
 
         foreach ($translationGroup->items as $translationItem) {
             $cellID = $this->languageMap[$translationItem->language];
             $content = $translationItem->content ? trim($translationItem->content) : null;
-            $this->spreadsheet->getActiveSheet()->setCellValueByColumnAndRow($cellID, $this->rowIndex, $content);
+            $this->spreadsheet->getActiveSheet()->setCellValueExplicitByColumnAndRow($cellID, $this->rowIndex, $content, DataType::TYPE_STRING);
         }
 
         $this->rowIndex++;

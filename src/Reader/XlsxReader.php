@@ -59,7 +59,7 @@ class XlsxReader extends TranslationReaderAbstract
                     continue;
                 }
 
-                $cellValue = trim($cell->getValue() ?: '');
+                $cellValue = trim((string) $cell->getValue() ?: '');
 
                 if ($cellID == 'A') {
                     $data->category = $cellValue;
